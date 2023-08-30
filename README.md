@@ -51,7 +51,6 @@ php artisan db:seed --class=WilIndoDistrictSeeder
 php artisan db:seed --class=WilIndoVillageSeeder
 ```
 
-## Data Kemendagri dari Layanan SPLP
 | Kode Provinsi | Nama Provinsi              | Kab/Kota | Kecamatan | Kel/Desa |
 | ------------- | -------------------------- | -------- | --------- | -------- |
 | 11            | Aceh                       | 23       | 290       | 6500     |
@@ -92,4 +91,4 @@ php artisan db:seed --class=WilIndoVillageSeeder
 | 94            | Papua Tengah               | 8        | 131       | 1208     |
 | 95            | Papua Pegunungan           | 8        | 252       | 2627     |
 | 96            | Papua Barat Daya           | 6        | 132       | 1014     |
-|               | Total                      | 514      | 7277      | 83764    |
+| Total         | 38                         | 514      | 7277      | 83764    |
