@@ -1,0 +1,42 @@
+{
+    "name": "didiwijaya/wilindo",
+    "description": "Package Laravel (Migration & Seeder) untuk wilayah Indonesia berdasarkan data SPLP Kemendagri",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "php",
+        "wilayah",
+        "indonesia",
+        "provinces",
+        "cities",
+        "districts",
+        "villages"
+    ],
+    "authors": [
+        {
+            "name": "Didi Wijaya",
+            "email": "ddwijaya3@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DidiWijaya\\WilIndo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Didi Wijaya",
+            "email": "ddwijaya3@gmail.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DidiWijaya\\WilIndo\\WilIndoServiceProvider"
+            ],
+            "aliases": {}
+        }
+    }, 
+    "prefer-stable": true
+}
