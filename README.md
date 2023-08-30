@@ -51,6 +51,7 @@ php artisan db:seed --class=WilIndoDistrictSeeder
 php artisan db:seed --class=WilIndoVillageSeeder
 ```
 
+## Data Kemendagri dari Layanan SPLP
 | Kode Provinsi | Nama Provinsi              | Kab/Kota | Kecamatan | Kel/Desa |
 | ------------- | -------------------------- | -------- | --------- | -------- |
 | 11            | Aceh                       | 23       | 290       | 6500     |
