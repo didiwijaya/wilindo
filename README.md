@@ -91,5 +91,5 @@ php artisan db:seed --class=WilIndoVillageSeeder
 | 93            | Papua Selatan              | 4        | 82        | 690      |
 | 94            | Papua Tengah               | 8        | 131       | 1208     |
 | 95            | Papua Pegunungan           | 8        | 252       | 2627     |
-| 96            | Papua Barat Daya           | 6        | 132       | 1014     |
-| Total         | 38                         | 514      | 7277      | 83764    |
+| 96            | Papua Barat Daya           | 6        | 132       | 1013     |
+| Total         | 38                         | 514      | 7277      | 83763    |
