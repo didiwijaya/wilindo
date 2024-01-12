@@ -14,7 +14,7 @@ class WilindoProvinceSeeder extends Seeder
      */
     public function run(): void
     {
-        $response = Http::get('https://api-splp.layanan.go.id/master_data_wilayah_provinsi/1.0/data_master_kode_provinsi/6e799e6f635a8b6a');
+        $response = Http::get('https://api-splp.layanan.go.id/master_data_wilayah_provinsi/2.0');
         $records = $response->object();
 
         $provinces = [];
