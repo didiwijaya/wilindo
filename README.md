@@ -4,7 +4,16 @@
 
 Package Laravel untuk menambahkan migration dan seeder ke project Anda, dimana migration dan seeder tersebut digunakan untuk menyimpan data wilayah Indonesia mulai dari Provinsi, Kabupaten/Kota, Kecamatan dan Desa/Kelurahan.
 
-Sumber data : Layanan SPLP (https://splp.layanan.go.id) portal Kementerian Dalam Negeri.
+## 📡 Sumber Data
+
+Data wilayah Indonesia (Provinsi, Kabupaten/Kota, Kecamatan, Desa/Kelurahan) bersumber dari layanan master_data_wilayah yang disediakan oleh Kementerian Dalam Negeri melalui aplikasi SPLP yang dikelola oleh Kementerian Komunikasi dan Digital (Komdigi).
+
+**Dashboard API SPLP dapat diakses melalui:**
+🔗 https://splp.layanan.go.id/devportal/apis 
+
+*(catatan: hanya dapat diakses dari jaringan intra pemerintah)*
+
+Namun, API master_data_wilayah dapat diakses secara publik, sehingga integrasi ke dalam aplikasi Laravel tidak memerlukan akses jaringan internal pemerintah.
 
 ## 📋 Fitur
 
@@ -199,7 +208,8 @@ php artisan vendor:publish --tag=wilindo-seeders
 
 ## 📝 Catatan
 
-- Data diambil dari API SPLP Kemendagri secara real-time
+- Data diambil dari API master_data_wilayah SPLP Kemendagri secara real-time
+- API dapat diakses secara publik tanpa perlu akses jaringan internal pemerintah
 - Proses seeding mungkin memakan waktu lama karena data yang besar
 - Pastikan koneksi internet stabil saat menjalankan seeder
 - Memory limit akan otomatis ditingkatkan untuk seeder desa/kelurahan
