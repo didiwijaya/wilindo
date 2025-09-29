@@ -153,6 +153,8 @@ php artisan vendor:publish --tag=wilindo-seeders
 
 ## 📊 Data Kemendagri dari Layanan SPLP
 
+*Tabel statis ini dibuat pada: 29 September 2025 | Data real-time dari API SPLP Kemendagri*
+
 | Kode Provinsi | Nama Provinsi              | Kab/Kota | Kecamatan | Kel/Desa |
 | ------------- | -------------------------- | -------- | --------- | -------- |
 | 11            | Aceh                       | 23       | 290       | 6500     |
@@ -192,8 +194,8 @@ php artisan vendor:publish --tag=wilindo-seeders
 | 93            | Papua Selatan              | 4        | 82        | 690      |
 | 94            | Papua Tengah               | 8        | 131       | 1208     |
 | 95            | Papua Pegunungan           | 8        | 252       | 2627     |
-| 96            | Papua Barat Daya           | 6        | 132       | 1013     |
-| **Total**     | **38**                     | **514**  | **7277**  | **83763** |
+| 96            | Papua Barat Daya           | 6        | 132       | 1018     |
+| **Total**     | **38**                     | **514**  | **7277**  | **83768** |
 
 ## 📝 Catatan
 
