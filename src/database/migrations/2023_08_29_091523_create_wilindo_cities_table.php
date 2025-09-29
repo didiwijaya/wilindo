@@ -16,11 +16,15 @@ return new class extends Migration
             $table->char('code', 4)->unique();
             $table->char('province_code', 2);
             $table->string('name', 255);
+            $table->timestamps();
             
             $table->foreign('province_code')
                 ->references('code')
                 ->on(config('wilindo.prefix') . 'provinces')
                 ->onUpdate('cascade')->onDelete('restrict');
+                
+            $table->index(['province_code']);
+            $table->index(['name']);
         });
     }
 

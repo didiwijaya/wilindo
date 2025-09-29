@@ -13,29 +13,61 @@ class WilindoVillageSeeder extends Seeder
      */
     public function run(): void
     {
-        ini_set('max_execution_time', 0);
-        ini_set('memory_limit', '2048M');
+        try {
+            ini_set('max_execution_time', 0);
+            ini_set('memory_limit', '2048M');
+            
+            $this->command->info('Mengambil data desa/kelurahan dari API SPLP...');
+            $this->command->warn('Proses ini mungkin memakan waktu lama karena data yang besar...');
 
-        $response = Http::get('https://api-splp.layanan.go.id/master_data_desakelurahan/1.0/data_master_kode_desa_kelurahan/eefd56bc6663e0d1');
-        $records = $response->object();
+            $response = Http::timeout(300)->get('https://api-splp.layanan.go.id/master_data_desakelurahan/2.0');
+            
+            if (!$response->successful()) {
+                throw new \Exception('Gagal mengambil data dari API SPLP. Status: ' . $response->status());
+            }
+            
+            $records = $response->object();
+            
+            if (!isset($records->data) || !is_array($records->data)) {
+                throw new \Exception('Format data API tidak valid');
+            }
 
-        $villages = [];
-        if (count($records->data)) {
+            $villages = [];
             foreach ($records->data as $dt) {
+                if (!isset($dt->kode_desa_kelurahan) || !isset($dt->kode_kecamatan) || !isset($dt->nama_desa_kelurahan)) {
+                    continue;
+                }
+                
                 $villages[] = [
                     'code' => str_replace('.', '', $dt->kode_desa_kelurahan), 
                     'district_code' => str_replace('.', '', $dt->kode_kecamatan), 
-                    'name' => $dt->nama_desa_kelurahan
+                    'name' => $dt->nama_desa_kelurahan,
+                    'created_at' => now(),
+                    'updated_at' => now()
                 ];
             }
-        }
 
-        DB::table(config('wilindo.prefix') . 'villages')->truncate();
+            if (empty($villages)) {
+                throw new \Exception('Tidak ada data desa/kelurahan yang ditemukan');
+            }
 
-        $villages = collect($villages);
-        $chunks = $villages->chunk(2500);
-        foreach ($chunks as $chunk) {
-            DB::table(config('wilindo.prefix') . 'villages')->insert($chunk->toArray());
+            DB::table(config('wilindo.prefix') . 'villages')->truncate();
+
+            $villages = collect($villages);
+            $chunks = $villages->chunk(2500);
+            $totalInserted = 0;
+            
+            foreach ($chunks as $chunk) {
+                DB::table(config('wilindo.prefix') . 'villages')->insert($chunk->toArray());
+                $totalInserted += $chunk->count();
+                $this->command->info("Memproses {$totalInserted} dari " . count($villages) . " data desa/kelurahan...");
+            }
+            
+            $this->command->info('Berhasil menyimpan ' . count($villages) . ' data desa/kelurahan');
+            
+        } catch (\Exception $e) {
+            $this->command->error('Error: ' . $e->getMessage());
+            throw $e;
         }
     }
 }

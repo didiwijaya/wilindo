@@ -21,6 +21,18 @@ class WilIndoServiceProvider extends ServiceProvider
             $this->commands([
                 WilIndoPublishCommand::class,
             ]);
+            
+            $this->publishes([
+                __DIR__.'/config/wilindo.php' => config_path('wilindo.php'),
+            ], 'wilindo-config');
+            
+            $this->publishes([
+                __DIR__.'/database/migrations/' => database_path('migrations'),
+            ], 'wilindo-migrations');
+            
+            $this->publishes([
+                __DIR__.'/database/seeders/' => database_path('seeders'),
+            ], 'wilindo-seeders');
         }
     }
 
@@ -31,6 +43,14 @@ class WilIndoServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__.'/config/wilindo.php', 'wilindo'
+        );
         
+        // Register models for auto-discovery
+        $this->app->bind('DidiWijaya\WilIndo\Models\Province');
+        $this->app->bind('DidiWijaya\WilIndo\Models\City');
+        $this->app->bind('DidiWijaya\WilIndo\Models\District');
+        $this->app->bind('DidiWijaya\WilIndo\Models\Village');
     }
 }

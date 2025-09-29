@@ -23,13 +23,15 @@
             "DidiWijaya\\WilIndo\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "Didi Wijaya",
-            "email": "ddwijaya3@gmail.com"
-        }
-    ],
-    "require": {},
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9.0|^10.0|^11.0",
+        "illuminate/database": "^9.0|^10.0|^11.0",
+        "illuminate/console": "^9.0|^10.0|^11.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0|^10.0"
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -37,6 +39,7 @@
             ],
             "aliases": {}
         }
-    }, 
+    },
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
